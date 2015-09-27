@@ -1,2 +1,4 @@
 /// <reference path="threejs/three.d.ts" />
-/// <reference path="../jspm_packages/npm/ts-events@2.0.0/ts-events.d.ts" />
+/// <reference path="node-uuid/node-uuid.d.ts" />
+/// <reference path="node/node.d.ts" />
+/// <reference path="ts-events/ts-events.d.ts" />

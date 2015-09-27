@@ -7,6 +7,12 @@
   "installed": {
     "threejs/three.d.ts": {
       "commit": "df7fa931bd3525fba41e5152e3ee15e91fca8a4c"
+    },
+    "node-uuid/node-uuid.d.ts": {
+      "commit": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
+    },
+    "node/node.d.ts": {
+      "commit": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     }
   }
 }

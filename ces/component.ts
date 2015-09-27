@@ -1,6 +1,8 @@
+import {HashMap} from '../collections/map';
+
 export interface IComponent {}
 
-export var ComponentRegistry = {};
+export var ComponentRegistry = new HashMap<string, IComponent>();
 
 // decorator
 export function Component(name: string): ClassDecorator {
@@ -10,6 +12,6 @@ export function Component(name: string): ClassDecorator {
             enumerable: true,
             writable: false
         });
-        ComponentRegistry[name] = target;
+        ComponentRegistry.put(name, target);
     };
 }

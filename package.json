@@ -1,11 +1,15 @@
 {
   "jspm": {
     "dependencies": {
-      "three.js": "github:mrdoob/three.js@master",
+      "node-uuid": "npm:node-uuid@^1.4.3",
+      "three": "github:mrdoob/three.js@master",
       "ts-events": "npm:ts-events@^2.0.0"
     },
     "devDependencies": {
       "typescript": "npm:typescript@^1.6.2"
     }
+  },
+  "devDependencies": {
+    "jspm": "^0.16.10"
   }
 }
