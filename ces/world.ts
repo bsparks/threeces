@@ -1,3 +1,5 @@
+/// <reference path="../typings/ts-events/ts-events.d.ts" />
+
 import {Map, HashMap} from '../collections/map';
 import {LinkedList} from '../collections/linkedList';
 import {Family} from './family';

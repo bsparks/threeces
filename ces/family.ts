@@ -1,3 +1,5 @@
+/// <reference path="../typings/ts-events/ts-events.d.ts" />
+
 import {Entity} from './entity';
 import {EntityList} from './entityList';
 import {SyncEvent} from 'ts-events';

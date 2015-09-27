@@ -2,6 +2,7 @@
 
 import {ISystem} from 'ces/system';
 import {IComponent, Component, ComponentManager} from 'ces/component';
+import {World} from 'ces/world';
 import * as THREE from 'three';
 
 @Component('health')
@@ -21,6 +22,9 @@ class TestSystem implements ISystem {
         console.debug('3', THREE);
     }
 }
+
+var world = window.world = new World();
+world.addSystem(new TestSystem());
 
 class App {
     private renderer: THREE.WebGLRenderer;
@@ -60,6 +64,8 @@ class App {
         this.cube.rotation.y += 0.1;
 
         this.renderer.render(this.scene, this.camera);
+
+        world.update(0.16);
     }
 }
 
