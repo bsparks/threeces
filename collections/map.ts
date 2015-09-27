@@ -9,9 +9,12 @@ export interface Map<K, V> {
     get(key: K): V;
     isEmpty(): boolean;
     put(key: K, value: V): void;
-    remove(key: K);
+    remove(key: K): V;
+    removeByValue(value: V): K;
     size(): number;
     values(): Array<V>;
+    keys(): Array<K>;
+    forEach(callback: Function);
 }
 
 function decode(key) {
@@ -34,6 +37,10 @@ export class HashMap<K, V> implements Map<K, V> {
     private _values;
     private _keys;
 
+    constructor() {
+        this.clear();
+    }
+
     values(): Array<V> {
         var result = [];
         for (var key in this._values) {
@@ -42,13 +49,12 @@ export class HashMap<K, V> implements Map<K, V> {
         return result;
     }
 
-    contains(value: V): boolean {
-        for (var key in this._values) {
-            if (value === this._values[key]) {
-                return true;
-            }
+    keys(): Array<K> {
+        var result = [];
+        for (var key of this._keys) {
+            result.push(key);
         }
-        return false;
+        return result;
     }
 
     containsKey(key: K): boolean {
@@ -74,12 +80,27 @@ export class HashMap<K, V> implements Map<K, V> {
         this._keys[k] = key;
     }
 
-    remove(key: K) {
+    remove(key: K): V {
         var k = decode(key);
         var value = this._values[k];
         delete this._values[k];
         delete this._keys[k];
         return value;
+    }
+
+    removeByValue(value: V): K {
+        var rkey;
+        for (var key in this._values) {
+            if (value === this._values[key]) {
+                rkey = key;
+                break;
+            }
+        }
+        if (rkey) {
+            this.remove(rkey);
+        }
+
+        return rkey;
     }
 
     size(): number {
@@ -93,5 +114,13 @@ export class HashMap<K, V> implements Map<K, V> {
     clear() {
         this._keys = {};
         this._values = {};
+    }
+
+    forEach(callback: Function) {
+        for (var key in this._values) {
+            if(callback(this._values[key], key) === false) {
+                break;
+            }
+        }
     }
 }

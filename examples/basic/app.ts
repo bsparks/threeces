@@ -1,7 +1,7 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
 import {ISystem} from 'ces/system';
-import {IComponent, Component, ComponentRegistry} from 'ces/component';
+import {IComponent, Component, ComponentManager} from 'ces/component';
 import * as THREE from 'three';
 
 @Component('health')
@@ -13,7 +13,7 @@ class HealthComponent implements IComponent {
 
 window.foo = new HealthComponent(8,8);
 console.debug('C: ', window.foo);
-console.debug('R: ', ComponentRegistry);
+console.debug('R: ', ComponentManager, ComponentManager.registry, ComponentManager.registry.size());
 
 class TestSystem implements ISystem {
     update(delta: number) {

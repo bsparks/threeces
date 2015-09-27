@@ -1,8 +1,12 @@
-import {HashMap} from '../collections/map';
+import {Map, HashMap} from '../collections/map';
 
-export interface IComponent {}
+export interface IComponent {
 
-export var ComponentRegistry = new HashMap<string, IComponent>();
+}
+
+export class ComponentManager {
+    static registry: Map<string, IComponent> = new HashMap<string, IComponent>();
+}
 
 // decorator
 export function Component(name: string): ClassDecorator {
@@ -10,8 +14,9 @@ export function Component(name: string): ClassDecorator {
         Object.defineProperty(target.prototype, '$name', {
             value: name,
             enumerable: true,
-            writable: false
+            configurable: false
         });
-        ComponentRegistry.put(name, target);
+
+        ComponentManager.registry.put(name, target);
     };
 }
