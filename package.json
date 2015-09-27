@@ -1,0 +1,11 @@
+{
+  "jspm": {
+    "dependencies": {
+      "three.js": "github:mrdoob/three.js@master",
+      "ts-events": "npm:ts-events@^2.0.0"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.2"
+    }
+  }
+}
