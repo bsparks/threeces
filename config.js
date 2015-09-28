@@ -30,6 +30,9 @@ System.config({
     },
     "ts-events": {
       "defaultExtension": "ts"
+    },
+    "util": {
+      "defaultExtension": "ts"
     }
   },
 

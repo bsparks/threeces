@@ -4,6 +4,7 @@ import {ISystem} from 'ces/system';
 import {IComponent, Component, ComponentManager} from 'ces/component';
 import {World} from 'ces/world';
 import * as THREE from 'three';
+import {Timer, Timing} from '../../util/timer';
 
 @Component('health')
 class HealthComponent implements IComponent {
@@ -19,18 +20,24 @@ console.debug('R: ', ComponentManager, ComponentManager.registry, ComponentManag
 class TestSystem implements ISystem {
     world: World;
     num: number = 0;
-    
+
+    timer: Timer;
+
     addedToWorld(world: World) {
         this.world = world;
+        this.timer = new Timer(3);
     }
-    
+
     removedFromWorld() {
         this.world = null;
     }
-    
+
     update(delta: number) {
-        this.num += delta;
-        console.debug('test: ', this.num);
+        //console.debug('delta: ', delta);
+        if (this.timer && this.timer.isExpired) {
+            this.timer.reset();
+            console.debug('Time! ', this.timer, ' >> ', Timing);
+        }
     }
 }
 
@@ -76,7 +83,9 @@ class App {
 
         this.renderer.render(this.scene, this.camera);
 
-        world.update(0.16);
+        Timing.step();
+
+        world.update(Timing.frameTime);
     }
 }
 
