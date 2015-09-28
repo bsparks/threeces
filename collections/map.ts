@@ -27,6 +27,8 @@ function decode(key) {
             return '' + key;
         case 'function':
             return key.className || key.name;
+        case 'undefined':
+            return uuid.v4();
         default:
             key.uuid = key.uuid ? key.uuid : uuid.v4();
             return key.uuid

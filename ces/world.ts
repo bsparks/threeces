@@ -1,12 +1,10 @@
-/// <reference path="../typings/ts-events/ts-events.d.ts" />
-
 import {Map, HashMap} from '../collections/map';
 import {LinkedList} from '../collections/linkedList';
 import {Family} from './family';
 import {EntityList} from './entityList';
 import {Entity} from './entity';
 import {ISystem} from './system';
-import {SyncEvent, QueuedEvent, flush} from 'ts-events';
+import {SyncEvent, QueuedEvent, flush} from '../ts-events/index';
 
 export class World {
     private _systems: Map<string, ISystem>;
@@ -20,15 +18,18 @@ export class World {
         this._families = new HashMap<string, Family>();
         this._systems = new HashMap<string, ISystem>();
 
+        this.entityRemoved = new QueuedEvent<Entity>();
         this.entityRemoved.attach(this, this._onRemoveEntity);
     }
 
     addSystem(system: ISystem, id?: string) {
         this._systems.put(id, system);
+        system.addedToWorld(this);
     }
 
     removeSystem(system: ISystem) {
         this._systems.removeByValue(system);
+        system.removedFromWorld();
     }
 
     addEntity(entity: Entity) {

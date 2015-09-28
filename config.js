@@ -27,6 +27,9 @@ System.config({
     },
     "collections": {
       "defaultExtension": "ts"
+    },
+    "ts-events": {
+      "defaultExtension": "ts"
     }
   },
 
@@ -34,7 +37,6 @@ System.config({
     "node-uuid": "npm:node-uuid@1.4.3",
     "three": "github:mrdoob/three.js@master",
     "three.js": "github:mrdoob/three.js@master",
-    "ts-events": "npm:ts-events@2.0.0",
     "typescript": "npm:typescript@1.6.2",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -61,11 +63,6 @@ System.config({
     },
     "npm:node-uuid@1.4.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
-    },
-    "npm:ts-events@2.0.0": {
-      "assert": "github:jspm/nodelibs-assert@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.1",
-      "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",

@@ -17,9 +17,20 @@ console.debug('C: ', window.foo);
 console.debug('R: ', ComponentManager, ComponentManager.registry, ComponentManager.registry.size());
 
 class TestSystem implements ISystem {
+    world: World;
+    num: number = 0;
+    
+    addedToWorld(world: World) {
+        this.world = world;
+    }
+    
+    removedFromWorld() {
+        this.world = null;
+    }
+    
     update(delta: number) {
-        console.log('update: ', delta);
-        console.debug('3', THREE);
+        this.num += delta;
+        console.debug('test: ', this.num);
     }
 }
 
